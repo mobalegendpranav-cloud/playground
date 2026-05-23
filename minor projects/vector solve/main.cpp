@@ -22,6 +22,7 @@ int main() {
     // The Output
     cout << "\n--- Results ---" << endl;
     cout << "Dot Product: " << dotProduct << endl;
+    // this is a change on github
 
     return 0;
 }
