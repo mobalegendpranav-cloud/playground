@@ -1,0 +1,26 @@
+import PyPDF2
+
+# Replace with the actual page numbers for Chapter 2 in your PDF
+# Note: PDF page numbers start at 0, and might not match the book's printed page numbers
+START_PAGE = 45 
+END_PAGE = 105  
+
+def extract_chapter_text(pdf_path, output_txt):
+    try:
+        reader = PyPDF2.PdfReader(pdf_path)
+        
+        with open(output_txt, 'w', encoding='utf-8') as f:
+            for i in range(START_PAGE, END_PAGE):
+                page = reader.pages[i]
+                text = page.extract_text()
+                
+                f.write(f"--- PAGE {i} ---\n")
+                f.write(text + "\n\n")
+                
+        print(f"Extraction complete! Saved to {output_txt}")
+        
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Run the extraction on your uploaded file
+extract_chapter_text('kyreszyen 8th edition.pdf', 'chapter2_text.txt')
